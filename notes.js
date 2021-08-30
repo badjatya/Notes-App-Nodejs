@@ -5,20 +5,26 @@ const getNotes = function () {
 };
 
 const addNote = (title, body) => {
-  try {
-    const notes = loadNotes();
-    notes.push({ title, body });
-    fs.writeFileSync("notes.js", notes);
-  } catch (error) {
-    console.log("Error");
-  }
+  const notes = loadNotes();
+  notes.push({ title, body });
+  saveNote(notes);
+  console.log("Note added");
 };
 
-function loadNotes() {
-  const bufferNotes = fs.readFileSync("notes.js");
-  const notes = bufferNotes.toString();
+function saveNote(notes) {
+  const notesJSON = JSON.stringify(notes);
+  fs.writeFileSync("notes.json", notesJSON);
+}
 
-  return JSON.parse(notes);
+function loadNotes() {
+  try {
+    const bufferNotes = fs.readFileSync("notes.json");
+    const notes = bufferNotes.toString();
+
+    return JSON.parse(notes);
+  } catch (error) {
+    return [];
+  }
 }
 
 module.exports = {
