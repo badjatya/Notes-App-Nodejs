@@ -35,7 +35,27 @@ function loadNotes() {
   }
 }
 
+const removeNote = (title) => {
+  if (title) {
+    const notes = loadNotes();
+
+    // Checking that title exist in json or not
+    const isTitleExists = notes.find((note) => note.title === title);
+
+    if (isTitleExists) {
+      const newNotes = notes.filter((note) => note.title !== title);
+      fs.writeFileSync("notes.json", JSON.stringify(newNotes));
+      console.log(chalk.green("Title: " + title + " removed"));
+    } else {
+      console.log(chalk.red.bold("Title does not exist"));
+    }
+  } else {
+    console.log(chalk.red.bold("Please enter title to be removed"));
+  }
+};
+
 module.exports = {
   getNotes,
   addNote,
+  removeNote,
 };

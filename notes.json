@@ -1,5 +1,1 @@
-[
-  { "title": "Shopping List", "body": "A list of shopping item" },
-  { "title": "item", "body": "Body Item" },
-  { "title": "item new", "body": "Body Item" }
-]
+[{"title":"Shopping List","body":"A list of shopping item"},{"title":"item new","body":"Body Item"},{"title":"item","body":"Summer"}]
