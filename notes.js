@@ -54,8 +54,20 @@ const removeNote = (title) => {
   }
 };
 
+const listNotes = () => {
+  const notes = loadNotes();
+
+  if (notes.length !== 0) {
+    console.log(chalk.inverse("Your Notes..."));
+    notes.map((note, index) => console.log(index + 1 + ". " + note.title));
+  } else {
+    console.log(chalk.red.inverse("No items in list "));
+  }
+};
+
 module.exports = {
   getNotes,
   addNote,
   removeNote,
+  listNotes,
 };
