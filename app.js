@@ -1,5 +1,6 @@
 const yargs = require("yargs");
 const notes = require("./notes.js");
+const chalk = require("chalk");
 
 // Customize yargs version
 yargs.version("1.1.0");
@@ -54,8 +55,19 @@ yargs.command({
 yargs.command({
   command: "read",
   describe: "Read a note",
-  handler: function () {
-    console.log("Reading a note");
+  builder: {
+    title: {
+      describe: "A title should be passed to read a specific note",
+      demandOption: true,
+      type: "sting",
+    },
+  },
+  handler: function (argv) {
+    if (argv.title) {
+      notes.readNote(argv.title);
+    } else {
+      console.log(chalk.red.bold("Please enter title to read"));
+    }
   },
 });
 
