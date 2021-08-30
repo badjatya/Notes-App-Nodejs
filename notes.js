@@ -1,4 +1,5 @@
 const fs = require("fs");
+const chalk = require("chalk");
 
 const getNotes = function () {
   return "Your notes...";
@@ -6,9 +7,16 @@ const getNotes = function () {
 
 const addNote = (title, body) => {
   const notes = loadNotes();
-  notes.push({ title, body });
-  saveNote(notes);
-  console.log("Note added");
+
+  let duplicateTitle = notes.find((note) => note.title === title);
+
+  if (!duplicateTitle) {
+    notes.push({ title, body });
+    saveNote(notes);
+    console.log(chalk.green.bold("Note added"));
+  } else {
+    console.log(chalk.red.bold("Title already exits..."));
+  }
 };
 
 function saveNote(notes) {
