@@ -1,0 +1,28 @@
+{
+  "name": "notes-app",
+  "version": "1.0.0",
+  "description": "A command line note taking app using nodejs",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/badjatya/Notes-App-Nodejs.git"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript",
+    "chalk",
+    "nodemon"
+  ],
+  "author": "Archit Badjatya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/badjatya/Notes-App-Nodejs/issues"
+  },
+  "homepage": "https://github.com/badjatya/Notes-App-Nodejs#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
